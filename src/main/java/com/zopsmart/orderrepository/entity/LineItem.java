@@ -3,20 +3,17 @@ package com.zopsmart.orderrepository.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 public class LineItem {
     @ManyToOne
     @JoinColumn
-    private Product id;
+    private Product productId;
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
     private UUID lineItemReference;
     private Integer quantity;
@@ -31,12 +28,12 @@ public class LineItem {
     private Integer quantityPendingRefunds;
 //    private List<FulFilmentStatus> fulFilmentStatuses;
 
-    public Product getId() {
-        return id;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setId(Product id) {
-        this.id = id;
+    public void setProductId(Product id) {
+        this.productId = id;
     }
 
     public UUID getLineItemReference() {

@@ -1,5 +1,7 @@
 package com.zopsmart.orderrepository.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,7 @@ public class Order {
     private String version;
     private String purchaseType;
     private String status;
+    @CreationTimestamp
     private Date creationTime;
     private Double grandTotal;
     //    private DeliveryInfo deliveryInfo;
@@ -48,7 +51,7 @@ public class Order {
     private String isInstacartOrder;
     private String substitutionAllowedForAllItems;
     private String cancelable;
-    private Integer ItemsCount;
+    private Integer itemsCount;
 
     public List<Product> getProducts() {
         return products;
@@ -283,10 +286,10 @@ public class Order {
     }
 
     public Integer getItemsCount() {
-        return ItemsCount;
+        return itemsCount;
     }
 
     public void setItemsCount(Integer itemsCount) {
-        ItemsCount = itemsCount;
+        this.itemsCount = itemsCount;
     }
 }

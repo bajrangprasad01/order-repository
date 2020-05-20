@@ -7,7 +7,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Double id;
+    private Long id;
     private String ageRestricted;
     private String alcoholFlag;
     private String availableOnClickList;
@@ -26,11 +26,11 @@ public class Product {
     private String prop65;
     private String eblFlag;
 
-    public Double getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

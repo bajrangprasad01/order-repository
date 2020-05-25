@@ -7,9 +7,9 @@ import java.util.UUID;
 
 @Entity
 public class LineItem {
-    @ManyToOne
-    @JoinColumn
-    private Product productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn
+    private Product product;
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",
@@ -28,12 +28,12 @@ public class LineItem {
     private Integer quantityPendingRefunds;
 //    private List<FulFilmentStatus> fulFilmentStatuses;
 
-    public Product getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Product id) {
-        this.productId = id;
+    public void setProduct(Product id) {
+        this.product = id;
     }
 
     public UUID getLineItemReference() {

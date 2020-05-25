@@ -1,6 +1,8 @@
 package com.zopsmart.orderrepository.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,8 +14,12 @@ public class Product {
     private String alcoholFlag;
     private String availableOnClickList;
     private String belowMinimumAdvertisedPrice;
-    @ManyToMany(mappedBy = "products")
-    private List<Category> categories;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinTable(name = "categories_products",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
+    @JsonIgnore
+    private List<Category> categories = new ArrayList<>();
     private String customerFacingSize;
     private String description;
     //    private List<FulfillMentOption> fulfillMentOptions;
@@ -25,6 +31,17 @@ public class Product {
     //    private List<FulfulmentDetail> fulfulmentDetails;
     private String prop65;
     private String eblFlag;
+
+    @Transient
+    private long categoryId;
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public Long getId() {
         return id;

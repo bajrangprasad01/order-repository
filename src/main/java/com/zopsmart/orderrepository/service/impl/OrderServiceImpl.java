@@ -3,6 +3,7 @@ package com.zopsmart.orderrepository.service.impl;
 import com.zopsmart.orderrepository.entity.Order;
 import com.zopsmart.orderrepository.repository.OrderRepository;
 import com.zopsmart.orderrepository.service.OrderService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -30,11 +31,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrder(long id) {
+    public Order getOrder(long id) throws NotFoundException {
         if (orderRepository.findById(id).isPresent()) {
             return orderRepository.findById(id).get();
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        throw new NotFoundException("Order Not found");
     }
 
     @Override

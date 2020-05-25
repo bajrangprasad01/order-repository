@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface LineItemRepository extends JpaRepository<LineItem, UUID> {
-    LineItem findByProductId(Product product);
+    LineItem findByProduct(Product product);
 }

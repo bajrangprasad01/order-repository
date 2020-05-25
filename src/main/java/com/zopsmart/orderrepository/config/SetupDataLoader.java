@@ -104,6 +104,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
                                                   final String customerFacingSize, final String description, final String category) {
         Product product = productRepository.findByDescription(description);
         Category category1 = categoryRepository.findByCategoryName(category);
+        logger.info(category1.getCategoryName());
+        List<Category> categories = new ArrayList<>(Arrays.asList(category1));
         if (product == null) {
             product = new Product();
             product.setAgeRestricted(ageRestricted);
@@ -112,7 +114,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
             product.setAvailableOnClickList(availableOnClickList);
             product.setBelowMinimumAdvertisedPrice(belowMinimumAdvertisedPrice);
             product.setCustomerFacingSize(customerFacingSize);
-            product.setCategories(new ArrayList<Category>(Arrays.asList(category1)));
+            product.setCategories(categories);
         }
         productRepository.save(product);
         logger.info(product.getCategories().toString());
@@ -125,10 +127,10 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
                                                     final String imageLocation, final String isRefundable,
                                                     final Integer quantityRefunded, final Integer quantityRefundable,
                                                     final Integer quantityCompleteRefunds, final Integer quantityPendingRefunds) {
-        LineItem lineItem = lineItemRepository.findByProductId(product);
+        LineItem lineItem = lineItemRepository.findByProduct(product);
         if (lineItem == null) {
             lineItem = new LineItem();
-            lineItem.setProductId(product);
+            lineItem.setProduct(product);
             lineItem.setQuantity(quantity);
             lineItem.setDescription(description);
             lineItem.setUnitPrice(unitPrice);

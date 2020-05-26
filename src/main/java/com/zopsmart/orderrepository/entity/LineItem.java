@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 public class LineItem {
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn
+    @JoinColumn(name = "product_id")
     private Product product;
     @Id
     @GeneratedValue(generator = "UUID")

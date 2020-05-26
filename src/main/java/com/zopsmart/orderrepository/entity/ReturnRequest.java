@@ -11,8 +11,8 @@ public class ReturnRequest {
     private Double id;
     private String status;
     private Date requestDate;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn
     private List<LineItem> lineItems;
     private String totalAmountToBeRefunded;
     private String totalRefund;

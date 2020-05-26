@@ -58,15 +58,15 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         logger.info("product save successfully");
 
         // == create LineItem
-        createLineItemIfNotFound(productRepository.findByDescription("Apple"), 29, "fresh", 120.0, "nothing",
-                "/c/d/e", "no", 0, 0, 0, 0);
-        createLineItemIfNotFound(productRepository.findByDescription("Banana"), 29, "fresh", 50.0, "nothing",
-                "/c/d/e", "no", 0, 0, 0, 0);
-        createLineItemIfNotFound(productRepository.findByDescription("Onion"), 29, "fresh", 30.0, "nothing",
-                "/c/d/e", "no", 0, 0, 0, 0);
-        createLineItemIfNotFound(productRepository.findByDescription("Potato"), 29, "fresh", 25.0, "nothing",
-                "/c/d/e", "no", 0, 0, 0, 0);
-        logger.info("LineItem save successfully");
+//        createLineItemIfNotFound(productRepository.findByDescription("Apple"), 29, "fresh", 120.0, "nothing",
+//                "/c/d/e", "no", 0, 0, 0, 0);
+//        createLineItemIfNotFound(productRepository.findByDescription("Banana"), 29, "fresh", 50.0, "nothing",
+//                "/c/d/e", "no", 0, 0, 0, 0);
+//        createLineItemIfNotFound(productRepository.findByDescription("Onion"), 29, "fresh", 30.0, "nothing",
+//                "/c/d/e", "no", 0, 0, 0, 0);
+//        createLineItemIfNotFound(productRepository.findByDescription("Potato"), 29, "fresh", 25.0, "nothing",
+//                "/c/d/e", "no", 0, 0, 0, 0);
+//        logger.info("LineItem save successfully");
 
 //        // == create Order
 //        createOrderIfNotFound("1.0","success","POS",565.0,

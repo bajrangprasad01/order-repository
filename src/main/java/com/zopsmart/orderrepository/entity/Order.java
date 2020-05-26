@@ -13,11 +13,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Long kcpOrderId;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn
     private List<Product> products;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn
     private List<Product> cancelProducts;
     private String version;
     private String purchaseType;
@@ -26,8 +26,8 @@ public class Order {
     private Date creationTime;
     private Double grandTotal;
     //    private DeliveryInfo deliveryInfo;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn
     private List<LineItem> items;
     private Long customerId;
     private Double lineSubTotal;
@@ -41,8 +41,8 @@ public class Order {
     private Double taxAmountToBeRefunded;
     private Double discount;
     private String banner;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn
     private List<ReturnRequest> returnRequests;
     private String hasPendingRefund;
     private String hasRefundableProduct;
